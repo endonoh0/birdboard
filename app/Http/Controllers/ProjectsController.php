@@ -10,12 +10,17 @@ class ProjectsController extends Controller
     {
         $projects = Project::all();
 
-        return view('projects.index', compact('projects'));
+        return view(route('projects.index'), compact('projects'));
     }
 
     public function store()
     {
-        Project::create(request(['title', 'description']));
+        $attributes = request()->validate([
+            'title' => 'required',
+            'description' => 'required'
+        ]);
+
+        Project::create($attributes);
 
         return redirect('/projects');
     }
