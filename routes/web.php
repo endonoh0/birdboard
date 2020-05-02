@@ -17,10 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/projects', 'ProjectsController@index')->name('projects.index');
-Route::get('/projects/{project}', 'ProjectsController@show');
-Route::post('/projects', 'ProjectsController@store')->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/projects', 'ProjectsController@index')->name('projects.index');
+    Route::get('/projects/{project}', 'ProjectsController@show');
+    Route::post('/projects', 'ProjectsController@store');
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
