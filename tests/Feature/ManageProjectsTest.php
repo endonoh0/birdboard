@@ -57,6 +57,7 @@ class ProjectsTest extends TestCase
     /** @test */
     public function a_user_can_view_their_project()
     {
+        $this->withoutExceptionHandling();
         $this->be(factory('App\User')->create());
 
         $project = factory('App\Project')->create(['owner_id' => auth()->id()]);
