@@ -27,16 +27,17 @@ class ProjectsTest extends TestCase
     {
         $this->signIn();
 
-        $this->get('/projects/create')->assertStatus(200);
+        $this->get('/projects/create')
+            ->assertStatus(200);
 
         $attributes = [
             'title' => $this->faker->sentence,
             'description' => $this->faker->paragraph
         ];
 
-        $project = factory('App\Project')->raw($attributes);
+        $response = $this->post('/projects', $attributes);
 
-        $this->post('/projects', $project)->assertRedirect('/projects');
+        $response->assertRedirect(Project::where($attributes)->first()->path());
 
         $this->assertDatabaseHas('projects', $attributes);
 
