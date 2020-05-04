@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Project;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -35,5 +36,15 @@ class ProjectTest extends TestCase
         $this->assertCount(1, $project->tasks);
 
         $this->assertTrue($project->tasks->contains($task));
+    }
+
+    /** @test */
+    public function a_task_update_also_updates_its_project_timestamp()
+    {
+        $project = factory(Project::class)->create(['updated_at' => now()->subDays(30)]);
+
+        $task = $project->addTask('Test task');
+
+        $this->assertEquals($project->fresh()->updated_at, $task->updated_at);
     }
 }
