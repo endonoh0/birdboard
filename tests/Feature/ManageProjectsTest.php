@@ -76,16 +76,6 @@ class ProjectsTest extends TestCase
     }
 
     /** @test */
-    public function a_project_requires_a_title()
-    {
-        $this->signIn();
-
-        $attributes = factory('App\Project')->raw(['title' => '']);
-
-        $this->post('/projects', $attributes)->assertSessionHasErrors('title');
-    }
-
-    /** @test */
     public function a_user_can_view_their_project()
     {
         $project = ProjectFactory::create();
@@ -117,12 +107,22 @@ class ProjectsTest extends TestCase
     }
 
     /** @test */
+    public function a_project_requires_a_title()
+    {
+        $this->signIn();
+
+        $attributes = factory('App\Project')->raw(['title' => '']);
+
+        $this->post('/projects', $attributes)->assertSessionHasErrors('title');
+    }
+
+    /** @test */
     public function a_project_requires_a_description()
     {
         $this->signIn();
 
         $attributes = factory('App\Project')->raw(['description' => '']);
 
-        $this->post('/projects', [])->assertSessionHasErrors('description');
+        $this->post('/projects', $attributes)->assertSessionHasErrors('description');
     }
 }
