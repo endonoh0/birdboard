@@ -27,11 +27,9 @@ class ProjectsTest extends TestCase
     /** @test */
     public function a_user_can_create_a_project()
     {
-        $this->withoutExceptionHandling();
         $this->signIn();
 
-        $this->get('/projects/create')
-            ->assertStatus(200);
+        $this->get('/projects/create')->assertStatus(200);
 
         $attributes = [
             'title' => $this->faker->sentence,

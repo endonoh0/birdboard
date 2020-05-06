@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Task;
 use Tests\TestCase;
 use Facades\Tests\Setup\ProjectFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -38,7 +39,12 @@ class TriggerActivtyTest extends TestCase
         $project->addTask('New task');
 
         $this->assertCount(2, $project->activity);
-        $this->assertEquals('created_task', $project->activity->last()->description);
+
+        tap($project->activity->last(), function ($activity) {
+            $this->assertEquals('created_task', $activity->description);
+            $this->assertInstanceOf(Task::class, $activity->subject);
+            $this->assertEquals('New task', $activity->subject->body);
+        });
     }
 
     /** @test */
@@ -53,7 +59,11 @@ class TriggerActivtyTest extends TestCase
             ]);
 
         $this->assertCount(3, $project->activity);
-        $this->assertEquals('completed_task', $project->activity->last()->description);
+
+        tap($project->activity->last(), function ($activity) {
+            $this->assertEquals('completed_task', $activity->description);
+            $this->assertInstanceOf(Task::class, $activity->subject);
+        });
     }
 
     /** @test */
