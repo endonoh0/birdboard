@@ -18,6 +18,7 @@ class CreateActivitiesTable extends Migration
             $table->foreignId('project_id')->constrained();
             $table->nullableMorphs('subject');
             $table->string('description');
+            $table->text('changes')->nullable();
             $table->timestamps();
         });
     }
