@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Project;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -39,9 +38,19 @@ class ProjectTest extends TestCase
     }
 
     /** @test */
+    public function it_can_invite_a_user()
+    {
+        $project = factory('App\Project')->create();
+
+        $project->invite($user = factory('App\User')->create());
+
+        $this->assertTrue($project->members->contains($user));
+    }
+
+    /** @test */
     public function a_task_update_also_updates_its_project_timestamp()
     {
-        $project = factory(Project::class)->create(['updated_at' => now()->subDays(30)]);
+        $project = factory('App\Project')->create(['updated_at' => now()->subDays(30)]);
 
         $task = $project->addTask('Test task');
 
