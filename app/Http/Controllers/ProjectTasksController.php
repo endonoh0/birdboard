@@ -11,8 +11,8 @@ class ProjectTasksController extends Controller
      * Add a task to the given project.
      *
      * @param \App\Project $project
-     * @param Project $project
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Project $project)
     {
@@ -31,6 +31,7 @@ class ProjectTasksController extends Controller
      * @param  Project $project
      * @param  Task    $task
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Project $project, Task $task)
     {

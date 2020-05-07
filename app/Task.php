@@ -31,6 +31,11 @@ class Task extends Model
         'completed' => 'boolean'
     ];
 
+    /**
+     * Model events that should trigger new activity.
+     *
+     * @var array
+     */
     protected static $recordableEvents = ['created', 'deleted'];
 
     /**

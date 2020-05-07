@@ -55,14 +55,4 @@ class Project extends Model
     {
         return $this->tasks()->create(compact('body'));
     }
-
-    /**
-     * The activity feed for the project.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function activity()
-    {
-        return $this->hasMany(Activity::class)->latest();
-    }
 }
