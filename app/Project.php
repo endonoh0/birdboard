@@ -2,19 +2,18 @@
 
 namespace App;
 
-use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {
+    use RecordsActivity;
+
     /**
      * Attributes to guard against mass assignment.
      *
      * @var array
      */
     protected $guarded = [];
-
-    public $old = [];
 
     /**
      *  The path to the project.
@@ -55,29 +54,6 @@ class Project extends Model
     public function addTask($body)
     {
         return $this->tasks()->create(compact('body'));
-    }
-
-    /**
-     * Record activity for a project.
-     *
-     * @param string $descripton
-     */
-    public function recordActivity($description)
-    {
-        $this->activity()->create([
-            'description' => $description,
-            'changes' => $this->activityChanges($description)
-        ]);
-    }
-
-    protected function activityChanges($description)
-    {
-        if ($description == 'updated') {
-            return [
-                'before' => Arr::except(array_diff($this->old, $this->getAttributes()), 'updated_at'),
-                'after' => Arr::except($this->getChanges(), 'updated_at')
-            ];
-        }
     }
 
     /**

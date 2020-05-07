@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
+    use RecordsActivity;
+
     /**
      * Attributes to guard against mass assignment.
      *
@@ -28,6 +30,8 @@ class Task extends Model
     protected $casts = [
         'completed' => 'boolean'
     ];
+
+    protected static $recordableEvents = ['created', 'deleted'];
 
     /**
      * Mark the task as complete.
@@ -67,28 +71,5 @@ class Task extends Model
     public function path()
     {
         return "/projects/{$this->project->id}/tasks/{$this->id}";
-    }
-
-    /**
-     * Record activity for a project.
-     *
-     * @param string $descripton
-     */
-    public function recordActivity($description)
-    {
-        $this->activity()->create([
-            'project_id' => $this->project_id,
-            'description' => $description
-        ]);
-    }
-
-    /**
-     * The activity feed for the project.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function activity()
-    {
-        return $this->morphMany(Activity::class, 'subject')->latest();
     }
 }
