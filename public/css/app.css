@@ -595,6 +595,45 @@ video {
   height: auto;
 }
 
+.button {
+  background-color: var(--button-background-color);
+  --text-opacity: 1;
+  color: #fff;
+  color: rgba(255, 255, 255, var(--text-opacity));
+  text-decoration: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.card {
+  background-color: var(--card-background-color);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  color: var(--text-default-colors);
+}
+
+.theme-light {
+  --page-background-color: #F5F6F9;
+  --card-background-color: white;
+  --button-background-color: #47cdff;
+  --header-background-color: white;
+  --text-default-colors: #222;
+}
+
+.theme-dark {
+  --page-background-color: #17181E;
+  --card-background-color: #1F2027;
+  --button-background-color: #59B6F9;
+  --header-background-color: #1F2027;
+  --text-default-colors: #fff;
+}
+
 .container {
   width: 100%;
 }
@@ -17460,45 +17499,6 @@ video {
 
 .delay-1000 {
   transition-delay: 1000ms;
-}
-
-.button {
-  background-color: var(--button-background-color);
-  --text-opacity: 1;
-  color: #fff;
-  color: rgba(255, 255, 255, var(--text-opacity));
-  text-decoration: none;
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  font-size: 0.875rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
-.card {
-  background-color: var(--card-background-color);
-  padding: 1.25rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  color: var(--text-default-colors);
-}
-
-.theme-light {
-  --page-background-color: #F5F6F9;
-  --card-background-color: white;
-  --button-background-color: #47cdff;
-  --header-background-color: white;
-  --text-default-colors: #222;
-}
-
-.theme-dark {
-  --page-background-color: #17181E;
-  --card-background-color: #1F2027;
-  --button-background-color: #59B6F9;
-  --header-background-color: #1F2027;
-  --text-default-colors: #fff;
 }
 
 @media (min-width: 640px) {
@@ -84864,3 +84864,4 @@ video {
     transition-delay: 1000ms;
   }
 }
+

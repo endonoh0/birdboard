@@ -14,7 +14,7 @@
             <div class="control">
                 <input id="name"
                        type="text"
-                       class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                       class="input bg-transparent border border-gray-500 rounded p-2 text-xs w-full{{ $errors->has('name') ? ' is-invalid' : '' }}"
                        name="name"
                        value="{{ old('name') }}"
                        required
@@ -28,7 +28,7 @@
             <div class="control">
                 <input id="email"
                        type="email"
-                       class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                       class="input bg-transparent border border-gray-500 rounded p-2 text-xs w-full{{ $errors->has('email') ? ' is-invalid' : '' }}"
                        name="email"
                        value="{{ old('email') }}"
                        required>
@@ -41,7 +41,7 @@
             <div class="control">
                 <input id="password"
                        type="password"
-                       class="input bg-transparent border border-muted-light rounded p-2 text-xs w-full{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                       class="input bg-transparent border border-gray-500 rounded p-2 text-xs w-full{{ $errors->has('password') ? ' is-invalid' : '' }}"
                        name="password"
                        required>
             </div>

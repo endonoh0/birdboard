@@ -1,9 +1,5 @@
 @tailwind base;
 
-@tailwind components;
-
-@tailwind utilities;
-
 .button {
     @apply bg-button text-white no-underline rounded-lg shadow-lg text-sm py-2 px-5;
 }
@@ -30,3 +26,7 @@
 
     --text-default-colors: #fff;
 }
+@tailwind components;
+
+@tailwind utilities;
+
