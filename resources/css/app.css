@@ -5,9 +5,28 @@
 @tailwind utilities;
 
 .button {
-    @apply bg-blue-400 text-white no-underline rounded-lg shadow-lg text-sm py-2 px-5;
+    @apply bg-button text-white no-underline rounded-lg shadow-lg text-sm py-2 px-5;
 }
 
 .card {
-    @apply bg-white p-5 rounded-lg shadow-sm;
+    @apply bg-card p-5 rounded-lg shadow-sm;
+    color: var(--text-default-colors);
+}
+
+.theme-light {
+    --page-background-color: #F5F6F9;
+    --card-background-color: white;
+    --button-background-color: #47cdff;
+    --header-background-color: white;
+
+    --text-default-colors: #222;
+}
+
+.theme-dark {
+    --page-background-color: #17181E;
+    --card-background-color: #1F2027;
+    --button-background-color: #59B6F9;
+    --header-background-color: #1F2027;
+
+    --text-default-colors: #fff;
 }

@@ -15,6 +15,8 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
 
+      default: 'var(--text-default-colors)',
+
       black: '#000',
       white: '#fff',
 
@@ -152,6 +154,12 @@ module.exports = {
     },
     backgroundColor: theme => theme('colors'),
     backgroundOpacity: theme => theme('opacity'),
+    backgroundColor: {
+      page: 'var(--page-background-color)',
+      card: 'var(--card-background-color)',
+      button: 'var(--button-background-color)',
+      header: 'var(--header-background-color)'
+    },
     backgroundPosition: {
       bottom: 'bottom',
       center: 'center',
