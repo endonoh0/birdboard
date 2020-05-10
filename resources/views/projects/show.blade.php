@@ -3,8 +3,8 @@
 @section('content')
     <header class="flex items-center mb-3 py-4">
         <div class="flex justify-between items-end w-full">
-            <p class="text-sm text-default font-normal">
-                <a href="/projects" class="text-sm text-default font-normal">My Projects</a> / {{ $project->title }}
+            <p class="text-default font-normal">
+                <a href="/projects" class="text-default font-normal">My Projects</a> / {{ $project->title }}
             </p>
 
             <div class="flex items-center">
@@ -39,7 +39,7 @@
                                 @method('PATCH')
 
                                 <div class="flex">
-                                    <input class="bg-card w-full {{ $task->completed ? 'text-default' : '' }}" name="body" value="{{ $task->body }}">
+                                    <input class="bg-card text-default w-full {{ $task->completed ? 'line-through text-gray-500' : '' }}" name="body" value="{{ $task->body }}">
                                     <input name="completed" type="checkbox" onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
                                 </div>
                             </form>
@@ -64,7 +64,7 @@
 
                         <textarea
                             name="notes"
-                            class="card w-full mb-4"
+                            class="card text-default w-full mb-4"
                             placeholder="Anything you want to note?"
                             style="min-height: 200px"
                         >{{ $project->notes }}</textarea>
