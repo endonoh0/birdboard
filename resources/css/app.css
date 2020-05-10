@@ -2,6 +2,12 @@
 
 .button {
     @apply bg-button text-white no-underline rounded-lg shadow-lg text-sm py-2 px-5;
+    color: white;
+
+}
+
+.is-outline {
+    @apply bg-card border border-blue-300 text-blue-300;
 }
 
 .card {

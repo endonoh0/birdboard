@@ -608,6 +608,18 @@ video {
   padding-bottom: 0.5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  color: white;
+}
+
+.is-outline {
+  background-color: var(--card-background-color);
+  border-width: 1px;
+  --border-opacity: 1;
+  border-color: #90cdf4;
+  border-color: rgba(144, 205, 244, var(--border-opacity));
+  --text-opacity: 1;
+  color: #90cdf4;
+  color: rgba(144, 205, 244, var(--text-opacity));
 }
 
 .card {
