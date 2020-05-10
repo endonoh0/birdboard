@@ -12,10 +12,10 @@
                             type="text"
                             id="title"
                             class="border p-2 text-xs block w-full rounded"
-                            :class="errors.title ? 'border-red-500' : 'border-gray-500'"
+                            :class="form.errors.title ? 'border-red-500' : 'border-gray-500'"
                             v-model="form.title">
 
-                        <span class="text-xs italic text-red-500" v-if="errors.title" v-text="errors.title[0]"></span>
+                        <span class="text-xs italic text-red-500" v-if="form.errors.title" v-text="form.errors.title[0]"></span>
                     </div>
 
                     <div class="mb-4">
@@ -24,10 +24,11 @@
                         <textarea
                             id="Description"
                             rows="7"
-                            class="border border-gray-500 p-2 text-xs block w-full rounded"
+                            class="border p-2 text-xs block w-full rounded"
+                            :class="form.errors.description ? 'border-red-500' : 'border-gray-500'"
                             v-model="form.description"></textarea>
 
-                        <span class="text-xs italic text-red-500" v-if="errors.description" v-text="errors.description[0]"></span>
+                        <span class="text-xs italic text-red-500" v-if="form.errors.description" v-text="form.errors.description[0]"></span>
                     </div>
                 </div>
 
@@ -39,10 +40,10 @@
                             placeholder="Task 1"
                             class="border border-gray-500 p-2 mb-2 text-xs block w-full rounded"
                              v-for="task in form.tasks"
-                             v-model="task.value">
+                             v-model="task.body">
                     </div>
 
-                    <button class="inline-flex items-center text-xs" @click="addTask">
+                    <button type="button" class="inline-flex items-center text-xs" @click="addTask">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" class="mr-2">
                             <g fill="none" fill-rule="evenodd" opacity=".307">
                                 <path stroke="#000" stroke-opacity=".012" stroke-width="0" d="M-3-3h24v24H-3z"></path>
@@ -56,7 +57,7 @@
             </div>
 
             <footer class="flex justify-end">
-                <button class="button is-outline mr-4" @click="$modal.hide('new-project')">Cancel</button>
+                <button type="button" class="button is-outline mr-4" @click="$modal.hide('new-project')">Cancel</button>
                 <button class="button">Create Project</button>
             </footer>
         </form>
@@ -64,34 +65,33 @@
 </template>
 
 <script>
+    import BirdboardForm from './BirdboardForm';
+
     export default {
         data() {
             return {
-                form: {
+                form: new BirdboardForm({
                     title: '',
                     description: '',
                     tasks: [
-                        { value: '' },
+                        { body: '' },
                     ]
-                },
-
-                errors: {}
+                })
             };
         },
 
         methods: {
             addTask() {
-                this.form.tasks.push({ value: '' });
+                this.form.tasks.push({ body: '' });
             },
 
-            submit() {
-                axios.post('/projects', this.form)
-                    .then(response => {
-                        location = response.data.message;
-                    })
-                    .catch(error => {
-                        this.errors = error.response.data.errors;
-                    });
+            async submit() {
+                if (! this.form.tasks[0].body) {
+                    delete this.form.originalData.tasks;
+                }
+
+                this.form.submit('/projects')
+                    .then(response => location = response.data.message);
             }
         }
     }
