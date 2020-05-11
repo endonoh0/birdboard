@@ -630,6 +630,16 @@ video {
   color: var(--text-default-colors);
 }
 
+.dropdown-menu-link {
+  display: block;
+  color: var(--text-default-colors);
+  text-decoration: none;
+  font-size: 0.875rem;
+  line-height: 2;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .theme-light {
   --page-background-color: #F5F6F9;
   --card-background-color: white;

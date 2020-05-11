@@ -47,27 +47,34 @@
                         <div class="flex items-center ml-auto">
                             <!-- Authentication Links -->
                             @guest
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="text-blue-400 mr-4 no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="text-blue-400 no-underline hover:underline" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 @endif
                             @else
                                 <theme-switcher></theme-switcher>
 
-                                <a
-                                    class="flex items-center text-default no-underline text-sm"
-                                    href="#" role="button"
-                                    data-toggle="dropdown"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    v-pre
-                                >
-                                    <img width="35"
-                                         class="rounded full mr-3"
-                                         src="{{ gravatar_url(auth()->user()->email) }}">
+                                <dropdown align="right" width="200px">
+                                    <template #trigger>
+                                        <button
+                                            class="flex items-center text-default no-underline text-sm focus:outline-none"
+                                        >
+                                            <img width="35"
+                                                 class="rounded full mr-3"
+                                                 src="{{ gravatar_url(auth()->user()->email) }}">
 
-                                    {{ Auth::user()->name }}
-                                </a>
+                                            {{ Auth::user()->name }}
+                                        </button>
+                                    </template>
+
+                                    <template v-slot:default>
+                                        <form id="logout-form" method="POST" action="/logout">
+                                            @csrf
+
+                                            <button type="submit" class="dropdown-menu-link w-full text-left hover:underline">Logout</button>
+                                        </form>
+                                    </template>
+                                </dropdown>
                             @endguest
                         </div>
                     </div>

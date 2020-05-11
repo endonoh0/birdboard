@@ -15,6 +15,11 @@
     color: var(--text-default-colors);
 }
 
+.dropdown-menu-link {
+    @apply block text-default no-underline text-sm leading-loose px-4;
+}
+
+
 .theme-light {
     --page-background-color: #F5F6F9;
     --card-background-color: white;
