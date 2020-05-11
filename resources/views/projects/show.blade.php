@@ -38,8 +38,8 @@
                                 @csrf
                                 @method('PATCH')
 
-                                <div class="flex">
-                                    <input class="bg-card text-default w-full {{ $task->completed ? 'line-through text-gray-500' : '' }}" name="body" value="{{ $task->body }}">
+                                <div class="flex items-center">
+                                    <input name="body" value="{{ $task->body }}" class="bg-card text-default w-full {{ $task->completed ? 'line-through text-gray-500' : '' }}">
                                     <input name="completed" type="checkbox" onChange="this.form.submit()" {{ $task->completed ? 'checked' : '' }}>
                                 </div>
                             </form>
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="lg:w-1/4 px-3">
+            <div class="lg:w-1/4 px-3 lg:py-8">
                 @include ('projects.card')
                 @include ('projects.activity.card')
 

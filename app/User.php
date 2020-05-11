@@ -31,15 +31,6 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
      * Get all projects owner by the user.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

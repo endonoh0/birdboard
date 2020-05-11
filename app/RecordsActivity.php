@@ -94,8 +94,14 @@ trait RecordsActivity
     {
         if ($this->wasChanged()) {
             return [
-                'before' => Arr::except(array_diff($this->oldAttributes, $this->getAttributes()), 'updated_at'),
-                'after' => Arr::except($this->getChanges(), 'updated_at')
+                'before' => Arr::except(
+                    array_diff($this->oldAttributes, $this->getAttributes()),
+                    'updated_at'
+                ),
+                'after' => Arr::except(
+                    $this->getChanges(),
+                    'updated_at'
+                )
             ];
         }
     }
