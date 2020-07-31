@@ -8,15 +8,15 @@ Users can create, edit, and delete projects, and as well as invite other users t
 
 ## New Project
 
-![Screenshot of create a new project modal](docs/new-project.png)
+![Screenshot of create a new project modal](https://github.com/endonoh0/birdboard/blob/master/docs/new-project.png)
 
 ## Project Page
 
-![Screenshot of project page](docs/project-page.png)
+![Screenshot of project page](https://github.com/endonoh0/birdboard/blob/master/docs/project-page.png)
 
 ## Dark Mode
 
-![Screenshot of dark mode in project page](docs/dark-mode.png)
+![Screenshot of dark mode in project page](https://github.com/endonoh0/birdboard/blob/master/docs/dark-mode.png)
 
 # Setup
 
